@@ -47,24 +47,11 @@ int Help()
     TEXTOUT("                    Use PluginsConfigurationFile as plugins configuration file");
     TEXTOUT("                    Default, it uses the struct in the configuration file or no plugins configured if not inside.");
 
-    TEXTOUT("Reporting Elements:");
-    TEXTOUT("--Mediaconch, -mc");
-    TEXTOUT("                    Output MediaConch report (default)");
-    TEXTOUT("                    (MediaConch contains default verbosity of implementationChecks plus any provided policy checks.)");
-    TEXTOUT("--Mediainfo, -mi");
-    TEXTOUT("                    Output MediaInfo report");
-    TEXTOUT("--Mediatrace, -mt");
-    TEXTOUT("                    Output a trace of the file");
-    TEXTOUT("");
-
     TEXTOUT("Policy Checker:");
     TEXTOUT("--Policy=PolicyFileName, -p PolicyFileName");
     TEXTOUT("                    Apply the policy (XSL or Schematron) ");
     TEXTOUT("--CreatePolicy");
     TEXTOUT("                    Create a policy (XSL) from a file");
-    TEXTOUT("--PolicyReferenceFile=VideoFile, -prf VideoFile");
-    TEXTOUT("                    Use the VideoFile as reference to compare in policy");
-    TEXTOUT("");
 
     TEXTOUT("Output Formats:");
     TEXTOUT("--Format=text -ft");
@@ -72,25 +59,10 @@ int Help()
     TEXTOUT("--Format=xml -fx");
     TEXTOUT("                    Output in MediaInfo/MediaConch/MediaTrace XML format");
     TEXTOUT("                    (changed to -fa if there are more than 1 tool or more than 1 file)");
-    TEXTOUT("--Format=maxml -fa");
-    TEXTOUT("                    Output in MediaArea XML format");
     TEXTOUT("--Format=html -fh");
     TEXTOUT("                    Output MediaConch report in HTML format");
     TEXTOUT("--Display=DisplayFileName, -d DisplayFileName");
     TEXTOUT("                    Apply the display transformation (XSL)");
-    TEXTOUT("");
-
-    TEXTOUT("Watch folder:");
-    TEXTOUT("--WatchFolders-List, -wfl");
-    TEXTOUT("                    List the folder watched");
-    TEXTOUT("--WatchFolder=folder -wf folder");
-    TEXTOUT("                    Send to the server a folder to watch");
-    TEXTOUT("--WatchFolder-Reports=folder -wfr folder");
-    TEXTOUT("                    Create reports of the selected watch folder to this folder");
-    TEXTOUT("--WatchFolder-Not-Recursive");
-    TEXTOUT("                    If watch folder is enabled, do not check recursively the folder");
-    TEXTOUT("--WatchFolder-User=userId -wfu userId");
-    TEXTOUT("                    Create reports of the watch folder for the selected user ID");
     TEXTOUT("");
 
     TEXTOUT("Plugins:");
@@ -138,14 +110,6 @@ int Help_Advanced()
     TEXTOUT("-cz");
     TEXTOUT("                    Same as --Compression=ZLib");
     TEXTOUT("");
-    TEXTOUT("Implementation Checker:");
-    TEXTOUT("--ImplementationSchema=File");
-    TEXTOUT("                    Use the specified File for implementation validation");
-    TEXTOUT("--ImplementationVerbosity=V, -iv V");
-    TEXTOUT("                    Select verbosity (V) of the implementation check, default 5");
-    TEXTOUT("                    <= 4, show only fails and N/A");
-    TEXTOUT("                    >= 5, show fails, N/A and pass");
-    TEXTOUT("");
     TEXTOUT("--Force");
     TEXTOUT("                    Force to parse the file if registered in database");
     TEXTOUT("--NoMilAnalyze, -nmil");
@@ -159,8 +123,6 @@ int Help_Advanced()
     TEXTOUT("--Help=Ssh");
     TEXTOUT("                    More details about SSH specific options (e.g. for SFTP)");
     TEXTOUT("");
-    TEXTOUT("--DefaultValuesForType=Type,Field");
-    TEXTOUT("                    Give the default values for the field of the type given (separated by comma)");
 
     return CLI_RETURN_FINISH;
 }

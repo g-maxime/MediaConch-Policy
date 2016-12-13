@@ -59,6 +59,12 @@ namespace MediaConch
             if (files.empty())
                 return Help_Nothing();
 
+            if (!policies.size())
+            {
+                err = "At least, one policy is needed. Please, provide one.";
+                return -1;
+            }
+
             // If no report selected, use Implementation by default
             if (!report_set.count() && !policies.size())
                 report_set.set(MediaConchLib::report_MediaConch);
@@ -459,7 +465,7 @@ namespace MediaConch
     int CLI::set_watch_folder(const std::string& folder)
     {
         watch_folder = folder;
-        no_needs_files_mode = true;
+        //no_needs_files_mode = true;
         return 0;
     }
 
@@ -523,7 +529,7 @@ namespace MediaConch
     void CLI::set_list_watch_folders_mode()
     {
         list_watch_folders_mode = true;
-        no_needs_files_mode = true;
+        //no_needs_files_mode = true;
     }
 
     //--------------------------------------------------------------------------
