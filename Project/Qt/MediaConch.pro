@@ -38,8 +38,8 @@ isEmpty(WEB_MACHINE) {
     }
 }
 
-!macx:TARGET = mediaconch-gui
-macx:TARGET = MediaConch
+!macx:TARGET = mediaconch-policy-gui
+macx:TARGET = MediaConch-Policy-GUI
 TEMPLATE = app
 
 CONFIG += qt release

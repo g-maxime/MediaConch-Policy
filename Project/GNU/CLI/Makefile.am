@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign subdir-objects
 
-bin_PROGRAMS = mediaconch
-mediaconch_SOURCES = \
+bin_PROGRAMS = mediaconch-policy
+mediaconch_policy_SOURCES = \
     ../../../Source/CLI/CLI_Main.cpp \
     ../../../Source/CLI/CLI.cpp \
     ../../../Source/CLI/CommandLine_Parser.cpp \
@@ -40,9 +40,9 @@ mediaconch_SOURCES = \
     ../../../Source/Common/WatchFoldersManager.cpp \
     ../../../Source/Common/WatchFolder.cpp
 
-#mediaconch_LDFLAGS     = -no-undefined -version-info 0:0:0
-mediaconch_CPPFLAGS = $(XML_CFLAGS)
-mediaconch_LDFLAGS= $(XML_LIBS)
+#mediaconch_policy_LDFLAGS     = -no-undefined -version-info 0:0:0
+mediaconch_policy_CPPFLAGS = $(XML_CFLAGS)
+mediaconch_policy_LDFLAGS= $(XML_LIBS)
 
 INCLUDES = -I../../../Source -I../../../../MediaInfoLib/Source -I../../../../ZenLib/Source
 
