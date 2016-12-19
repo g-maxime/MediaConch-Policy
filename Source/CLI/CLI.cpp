@@ -53,7 +53,7 @@ namespace MediaConch
     //--------------------------------------------------------------------------
     int CLI::init(std::string& err)
     {
-        if (!no_needs_files_mode)
+        if (!no_needs_files_mode && !create_policy_mode)
         {
             // If no filenames (and no options)
             if (files.empty())
