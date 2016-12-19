@@ -330,7 +330,7 @@ function processCheckerStatusRequest(statusMulti) {
                     webpage.implementation_and_policy_is_valid(statusFileId, function (valid) {
                         var data = JSON.parse(valid);
                         // implementationCell(data.implemReport, 'result-' + data.implemReport.fileId, data.implemReport.fileId);
-                        policycell(data.statusReport, 'result-' + data.statusReport.fileId, data.statusReport.fileId)
+                        policyCell(data.statusReport, 'result-' + data.statusReport.fileId, data.statusReport.fileId)
                     });
                 }
             }
