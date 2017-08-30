@@ -37,14 +37,14 @@ OS=$(uname -s)
 # expr isn't available on mac
 if [ "$OS" = "Darwin" ]; then
     OS="mac"
-    BINARY="MediaConch.app/Contents/MacOS/MediaConch"
+    BINARY="MediaConch-Policy.app/Contents/MacOS/MediaConch-Policy"
     if test -d ~/Qt/5.3/clang_64/bin; then
         export PATH=$PATH:~/Qt/5.3/clang_64/bin
-    fi  
+    fi
 # if the 5 first caracters of $OS equal "Linux"
 elif [ "$(expr substr $OS 1 5)" = "Linux" ]; then
     OS="linux"
-    BINARY="mediaconch-gui"
+    BINARY="mediaconch-policy-gui"
 #elif [ "$(expr substr $OS 1 5)" = "SunOS" ]; then
 #    OS="solaris"
 #elif [ "$(expr substr $OS 1 7)" = "FreeBSD" ]; then
@@ -355,6 +355,6 @@ cd $Home
 
 ##################################################################
 
-echo "MediaConch executable is MediaConch/Project/Qt/$BINARY"
+echo "MediaConch-Policy executable is MediaConch/Project/Qt/$BINARY"
 
 unset -v Home ZenLib_Options MacOptions OS BINARY
