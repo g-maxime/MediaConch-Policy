@@ -11,8 +11,8 @@ var checkerAjax = (function() {
                 options.push("1");
             }
             webpage.on_file_upload_selected($('.tab-content .active .policyList').val(),
-                                            $('.tab-content .active .displayList').val(),
-                                            $('.tab-content .active .verbosityList').val(),
+                                            "",
+                                            "",
                                             $('#checkerUpload_fixer').is(':checked'),
                                             options,
                                             function (res)
@@ -30,8 +30,8 @@ var checkerAjax = (function() {
 
             webpage.on_file_online_selected($('#checkerOnline_file').val(),
                                             $('.tab-content .active .policyList').val(),
-                                            $('.tab-content .active .displayList').val(),
-                                            $('.tab-content .active .verbosityList').val(),
+                                            "",
+                                            "",
                                             false, options,
                                             function (res)
                                             {
@@ -47,8 +47,8 @@ var checkerAjax = (function() {
             }
 
             webpage.on_file_repository_selected($('.tab-content .active .policyList').val(),
-                                                $('.tab-content .active .displayList').val(),
-                                                $('.tab-content .active .verbosityList').val(),
+                                                "",
+                                                "",
                                                 $('#checkerRepository_fixer').is(':checked'),
                                                 options,
                                                 function (res)
@@ -171,9 +171,6 @@ var checkerAjax = (function() {
                 if (result.error && result.error.length)
                     mcoMessage.error(result.error);
 
-                if (result.implemReport !== undefined)
-                    implementationCell.success(result.implemReport, result.implemReport.fileId);
-
                 if (result.policyReport !== undefined)
                     policyCell.success(result.policyReport, result.policyReport.fileId);
             })
@@ -208,7 +205,6 @@ var checkerAjax = (function() {
         webpage.implementation_is_valid(fileId, function(res)
         {
             data = JSON.parse(res);
-            implementationCell.success(data, fileId);
         });
     };
 
@@ -216,7 +212,6 @@ var checkerAjax = (function() {
         webpage.on_fill_implementation_report(fileId, display, verbosity, function(res)
         {
             data = JSON.parse(res);
-            implementationCell.displayReport(fileId, data);
         });
     };
 

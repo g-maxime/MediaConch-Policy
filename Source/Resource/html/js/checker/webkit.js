@@ -12,8 +12,8 @@ var checkerAjax = (function() {
             }
 
             res = webpage.on_file_upload_selected($('.tab-content .active .policyList').val(),
-                                                  $('.tab-content .active .displayList').val(),
-                                                  $('.tab-content .active .verbosityList').val(),
+                                                  "",
+                                                  "",
                                                   $('#checkerUpload_fixer').is(':checked'),
                                                  options);
         }
@@ -27,8 +27,8 @@ var checkerAjax = (function() {
 
             res = webpage.on_file_online_selected($('#checkerOnline_file').val(),
                                                   $('.tab-content .active .policyList').val(),
-                                                  $('.tab-content .active .displayList').val(),
-                                                  $('.tab-content .active .verbosityList').val(),
+                                                  "",
+                                                  "",
                                                   false, options);
         }
         else if (formType === 'repository')
@@ -40,8 +40,8 @@ var checkerAjax = (function() {
             }
 
             res = webpage.on_file_repository_selected($('.tab-content .active .policyList').val(),
-                                                      $('.tab-content .active .displayList').val(),
-                                                      $('.tab-content .active .verbosityList').val(),
+                                                      "",
+                                                      "",
                                                       $('#checkerRepository_fixer').is(':checked'),
                                                       options);
         }
@@ -159,9 +159,6 @@ var checkerAjax = (function() {
             if (result.error && result.error.length)
                 mcoMessage.error(result.error);
 
-            if (result.implemReport !== undefined)
-                implementationCell.success(result.implemReport, result.implemReport.fileId);
-
             if (result.policyReport !== undefined)
                 policyCell.success(result.policyReport, result.policyReport.fileId);
         })
@@ -177,26 +174,6 @@ var checkerAjax = (function() {
         res = webpage.on_fill_policy_report(fileId, policy, display);
         data = JSON.parse(res);
         policyCell.displayReport(fileId, data);
-    };
-
-    var implementationStatus = function(fileId, tool) {
-        /**
-        * Get the implementation status for a file
-        * @param int id The file ID
-        * @param int reportType The report type ID
-        *
-        * @return json
-        * {"valid":true,"fileId":"fileId","error":null}
-        */
-        res = webpage.implementation_is_valid(fileId);
-        data = JSON.parse(res);
-        implementationCell.success(data, fileId);
-    };
-
-    var implementationReport = function(fileId, display, verbosity, tool) {
-        res = webpage.on_fill_implementation_report(fileId, display, verbosity);
-        data = JSON.parse(res);
-        implementationCell.displayReport(fileId, data);
     };
 
     var createPolicyFromFileId = function(fileId) {
@@ -220,32 +197,8 @@ var checkerAjax = (function() {
         }
     };
 
-    var downloadImplementationReportUrl = function(fileId, tool, display, verbosity) {
-        webpage.on_save_implementation_report(fileId, display, verbosity);
-    };
-
     var downloadPolicyReportUrl = function(fileId, policy, display) {
         webpage.on_save_policy_report(fileId, policy, display);
-    };
-
-    var downloadReportUrl = function(fileId, reportType) {
-        if (reportType === "mi")
-            webpage.on_save_mediainfo_report(fileId);
-        else if (reportType === "mt")
-            webpage.on_save_mediatrace_report(fileId);
-    };
-
-    var reportTreeUrl = function(fileId, reportType) {
-        if (reportType === "mi")
-        {
-            res = webpage.on_fill_mediainfo_report(fileId);
-            return res;
-        }
-        else if (reportType === "mt")
-        {
-            res = webpage.on_fill_mediatrace_report(fileId);
-            return res;
-        }
     };
 
     var closeAll = function() {
@@ -263,14 +216,9 @@ var checkerAjax = (function() {
         statusReportsMulti: statusReportsMulti,
         policyStatus: policyStatus,
         policyReport: policyReport,
-        implementationStatus: implementationStatus,
-        implementationReport: implementationReport,
         createPolicyFromFileId: createPolicyFromFileId,
         forceAnalyze: forceAnalyze,
-        downloadImplementationReportUrl: downloadImplementationReportUrl,
         downloadPolicyReportUrl: downloadPolicyReportUrl,
-        downloadReportUrl: downloadReportUrl,
-        reportTreeUrl: reportTreeUrl,
         addExisting: addExisting,
         closeAll: closeAll,
         closeElement: closeElement,

@@ -6,7 +6,7 @@ var policyCell = (function() {
 
     var success = function(data, fileId) {
         var nodeCell = result.$('#result-' + fileId);
-        var nodePolicy = $(result.cell(nodeCell, 2).node());
+        var nodePolicy = $(result.cell(nodeCell, 1).node());
         var policyResultText = '<span class="policyResult">';
         if (data.valid) {
             nodePolicy.removeClass().addClass('success');
@@ -20,23 +20,23 @@ var policyCell = (function() {
         policyResultText += '<span title="' + nodeCell.data('policyName') + '">' + textUtils.truncate(nodeCell.data('policyName'), 28) + '</span>';
         policyResultText += '</span>';
 
-        result.cell(nodeCell, 2).data('<div>' + policyResultText + '<p class="policyButton hidden"><a href="#" data-toggle="modal" data-target="#modalPolicy-' + fileId + '" title="View policy report"><span class="glyphicon glyphicon-eye-open policy-view" aria-hidden="true"></span></a><a href="#" class="policy-dld" title="Download policy report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></p></div>');
+        result.cell(nodeCell, 1).data('<div>' + policyResultText + '<p class="policyButton hidden"><a href="#" data-toggle="modal" data-target="#modalPolicy-' + fileId + '" title="View policy report"><span class="glyphicon glyphicon-eye-open policy-view" aria-hidden="true"></span></a><a href="#" class="policy-dld" title="Download policy report"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></p></div>');
 
         policyModal(fileId);
     };
 
     var error = function(fileId) {
         var nodeCell = result.$('#result-' + fileId);
-        var nodePolicy = $(result.cell(nodeCell, 2).node());
+        var nodePolicy = $(result.cell(nodeCell, 1).node());
         nodePolicy.addClass('danger');
-        result.cell(nodeCell, 2).data('<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span><span class="hidden">F</span> Server Error')
+        result.cell(nodeCell, 1).data('<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span><span class="hidden">F</span> Server Error')
     };
 
     var update = function(fileId, policyId) {
         removeModalIfExists(fileId);
 
         // Update cell if analysis of file is succeeded
-        if ($(result.cell('#result-' + fileId, 5).node()).hasClass('success')) {
+        if ($(result.cell('#result-' + fileId, 2).node()).hasClass('success')) {
             if (policyId !== undefined && policyId !== "-1" && policyId !== -1) {
                 reset(fileId);
                 addSpinnerToCell(fileId);
@@ -50,15 +50,15 @@ var policyCell = (function() {
     };
 
     var emptyWithModal = function(fileId) {
-        var nodePolicy = $(result.cell('#result-' + fileId, 2).node());
+        var nodePolicy = $(result.cell('#result-' + fileId, 1).node());
         nodePolicy.removeClass().addClass('info');
-        result.cell('#result-' + fileId, 2).data('<div><span class="policyResult">N/A</span><p class="policyButton hidden"><a href="#" data-toggle="modal" data-target="#modalPolicy-' + fileId + '" title="View policy report"><span class="glyphicon glyphicon-eye-open policy-view" aria-hidden="true"></span></a></p></div>');
+        result.cell('#result-' + fileId, 1).data('<div><span class="policyResult">N/A</span><p class="policyButton hidden"><a href="#" data-toggle="modal" data-target="#modalPolicy-' + fileId + '" title="View policy report"><span class="glyphicon glyphicon-eye-open policy-view" aria-hidden="true"></span></a></p></div>');
 
         policyModal(fileId);
     };
 
     var policyModal = function(fileId) {
-        var nodePolicy = $(result.cell('#result-' + fileId, 2).node());
+        var nodePolicy = $(result.cell('#result-' + fileId, 1).node());
         nodePolicy.find('.policy-view').on('click', function(e) {
             e.preventDefault();
             var nodeModal = result.$('#result-' + fileId);
@@ -75,9 +75,6 @@ var policyCell = (function() {
                                 <div class="col-md-6"> \
                                     <div class="form-group"><label class="col-sm-2 control-label">Policy</label><div class="col-sm-10"><select id="modalPolicyPolicy-' + fileId + '"></select></div></div> \
                                 </div> \
-                                <div class="col-md-6"> \
-                                    <div class="form-group"><label class="col-sm-2 control-label">Display</label><div class="col-sm-10"><select id="modalPolicyDisplay-' + fileId + '"></select></div></div> \
-                                </div> \
                             </div> \
                             <div class="modal-body"></div> \
                             <div class="modal-footer"> \
@@ -90,33 +87,15 @@ var policyCell = (function() {
 
                 if (nodeModal.data('policy') !== undefined && nodeModal.data('policy') !== "-1" && nodeModal.data('policy') !== -1) {
                     addSpinnerToModal(fileId);
-                    checkerAjax.policyReport(fileId, nodeModal.data('policy'), nodeModal.data('display'));
+                    checkerAjax.policyReport(fileId, nodeModal.data('policy'), "");
                 }
 
                 $('#modalPolicy-' + fileId + ' .policy-dld').on('click', function(e) {
                     e.preventDefault();
-                    var modalDisplay = $('#modalPolicyDisplay-' + fileId).val();
+                    var modalDisplay = "";
                     var modalPolicy = $('#modalPolicyPolicy-' + fileId).val();
                     if (modalPolicy) {
                         checkerAjax.downloadPolicyReportUrl(fileId, modalPolicy, modalDisplay);
-                    }
-                });
-
-                // Update report when display is changed
-                var displayList = $('.tab-content .active .displayList').clone();
-                displayList.attr('id', 'modalPolicyDisplay-' + fileId);
-                displayList.find('option').prop('selected', false);
-                displayList.find("option[value = '" + nodeModal.data('display') + "']").prop('selected', true);
-                $('#modalPolicyDisplay-' + fileId).replaceWith(displayList);
-                $('#modalPolicyDisplay-' + fileId).on('change', function(e) {
-                    var modalDisplay = $('#modalPolicyDisplay-' + fileId).val();
-                    var modalPolicy = $('#modalPolicyPolicy-' + fileId).val();
-                    if (modalPolicy) {
-                        addSpinnerToModal(fileId);
-                        checkerAjax.policyReport(fileId, modalPolicy, modalDisplay);
-                    }
-                    else {
-                        $('#modalPolicy-' + fileId + ' .modal-body').empty('');
                     }
                 });
 
@@ -127,7 +106,7 @@ var policyCell = (function() {
                 policyList.find("option[value = '" + nodeModal.data('policy') + "']").prop('selected', true);
                 $('#modalPolicyPolicy-' + fileId).replaceWith(policyList);
                 $('#modalPolicyPolicy-' + fileId).on('change', function(e) {
-                    var modalDisplay = $('#modalPolicyDisplay-' + fileId).val();
+                    var modalDisplay = "";
                     var modalPolicy = $('#modalPolicyPolicy-' + fileId).val();
                     if (modalPolicy) {
                         addSpinnerToModal(fileId);
@@ -143,12 +122,12 @@ var policyCell = (function() {
         nodePolicy.find('.policy-dld').on('click', function(e) {
             e.preventDefault();
             var nodeDld = result.$('#result-' + fileId);
-            checkerAjax.downloadPolicyReportUrl(fileId, nodeDld.data('policy'), nodeDld.data('display'));
+            checkerAjax.downloadPolicyReportUrl(fileId, nodeDld.data('policy'), "");
         });
     };
 
     var addSpinnerToCell = function(fileId) {
-        result.cell('#result-' + fileId, 2).data('<span class="spinner-cell"></span>');
+        result.cell('#result-' + fileId, 1).data('<span class="spinner-cell"></span>');
     };
 
     var addSpinnerToModal = function(fileId) {
@@ -176,8 +155,8 @@ var policyCell = (function() {
     };
 
     var reset = function(fileId) {
-        $(result.cell('#result-' + fileId, 2).node()).removeClass();
-        $(result.cell('#result-' + fileId, 2).node()).empty();
+        $(result.cell('#result-' + fileId, 1).node()).removeClass();
+        $(result.cell('#result-' + fileId, 1).node()).empty();
     };
 
     var removeModalIfExists = function(fileId) {
