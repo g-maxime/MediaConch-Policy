@@ -40,29 +40,41 @@ int Help()
     TEXTOUT("");
 
     TEXTOUT("Configuration Element:");
-    TEXTOUT("--Configuration=ConfigurationFile, -c ConfigurationFile");
-    TEXTOUT("                    Use ConfigurationFile as configuration file");
-    TEXTOUT("                    Default, it uses the one in the user data application file");
-    TEXTOUT("--PluginsConfiguration=PluginsConfigurationFile, -pc PluginsConfigurationFile");
-    TEXTOUT("                    Use PluginsConfigurationFile as plugins configuration file");
-    TEXTOUT("                    Default, it uses the struct in the configuration file or no plugins configured if not inside.");
+    TEXTOUT("  --Configuration=ConfigurationFile, -c ConfigurationFile");
+    TEXTOUT("      Use ConfigurationFile as configuration file");
+    TEXTOUT("      Default, it uses the one in the user data application file");
+    TEXTOUT("  --PluginsConfiguration=PluginsConfigurationFile, -pc PluginsConfigurationFile");
+    TEXTOUT("      Use PluginsConfigurationFile as plugins configuration file");
+    TEXTOUT("      Default, it uses the struct in the configuration file or");
+    TEXTOUT("      no plugins configured if not inside.");
+    TEXTOUT("");
 
     TEXTOUT("Policy Checker:");
-    TEXTOUT("--Policy=PolicyFileName, -p PolicyFileName");
-    TEXTOUT("                    Apply the policy (XSL or Schematron) ");
-    TEXTOUT("--CreatePolicy");
-    TEXTOUT("                    Create a policy (XSL) from a file");
+    TEXTOUT("  --Policy=PolicyFileName, -p PolicyFileName");
+    TEXTOUT("      Apply the policy (XSL or Schematron) ");
+    TEXTOUT("  --CreatePolicy");
+    TEXTOUT("      Create a policy (XSL) from a file");
+    TEXTOUT("");
 
     TEXTOUT("Output Formats:");
-    TEXTOUT("--Format=text -ft");
-    TEXTOUT("                    Output in Text format (default)");
-    TEXTOUT("--Format=xml -fx");
-    TEXTOUT("                    Output in MediaInfo/MediaConch/MediaTrace XML format");
-    TEXTOUT("                    (changed to -fa if there are more than 1 tool or more than 1 file)");
-    TEXTOUT("--Format=html -fh");
-    TEXTOUT("                    Output MediaConch report in HTML format");
-    TEXTOUT("--Display=DisplayFileName, -d DisplayFileName");
-    TEXTOUT("                    Apply the display transformation (XSL)");
+    TEXTOUT("  --Format=text, -ft");
+    TEXTOUT("      Output MediaConch reports in Text format");
+    TEXTOUT("  --Format=xml, -fx");
+    TEXTOUT("      Output MediaConch reports in XML format");
+    TEXTOUT("      (changed to -fa if there are more than 1 tool or more than 1 file)");
+    TEXTOUT("  --Format=html, -fh");
+    TEXTOUT("      Output MediaConch reports in HTML format");
+    TEXTOUT("  --Format=simple, -fs");
+    TEXTOUT("      Output MediaConch reports in a shorten form");
+    TEXTOUT("      (>1 line only if there are errors), default format");
+    TEXTOUT("  --Format=csv, -fc");
+    TEXTOUT("      Output MediaConch reports in CSV format (only for policies)");
+    TEXTOUT("  --Display=DisplayFileName, -d DisplayFileName");
+    TEXTOUT("      Apply the display transformation (XSL)");
+    TEXTOUT("");
+
+    TEXTOUT("  --List");
+    TEXTOUT("      List files analyzed.");
     TEXTOUT("");
 
     TEXTOUT("Plugins:");
