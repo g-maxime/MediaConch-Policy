@@ -27,7 +27,7 @@ else
     exit 1
 fi
 
-APPNAME="MediaConch"
+APPNAME="MediaConch-Policy"
 APPNAME_lower=`echo ${APPNAME} |awk '{print tolower($0)}'`
 KIND_lower=`echo ${KIND} |awk '{print tolower($0)}'`
 SIGNATURE="MediaArea.net"
@@ -81,7 +81,7 @@ fi
 
 if [ "$KIND" = "Server" ]; then
 
-    APPNAME_lower="mediaconchd"
+    APPNAME_lower="mediaconch-policyd"
 
     cd ../GNU/Server
     if test -e ".libs/${APPNAME_lower}"; then

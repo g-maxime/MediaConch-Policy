@@ -27,16 +27,16 @@ int Help()
     TEXTOUT("");
     TEXTOUT("Options:");
     TEXTOUT("Help:");
-    TEXTOUT("--Help, -h");
-    TEXTOUT("                    Display this help and exit");
-    TEXTOUT("--Help=Advanced, -ha");
-    TEXTOUT("                    Display the advanced help and exit");
-    TEXTOUT("--Version, -v");
-    TEXTOUT("                    Display the version and exit");
+    TEXTOUT("  --Help, -h");
+    TEXTOUT("      Display this help and exit");
+    TEXTOUT("  --Help=Advanced, -ha");
+    TEXTOUT("      Display the advanced help and exit");
+    TEXTOUT("  --Version, -v");
+    TEXTOUT("      Display the version and exit");
     TEXTOUT("");
 
-    TEXTOUT("--User=UserID, -u UserID");
-    TEXTOUT("                    CLI user will be UserID");
+    TEXTOUT("  --User=UserID, -u UserID");
+    TEXTOUT("      CLI user will be UserID");
     TEXTOUT("");
 
     TEXTOUT("Configuration Element:");
@@ -66,17 +66,17 @@ int Help()
     TEXTOUT("");
 
     TEXTOUT("Plugins:");
-    TEXTOUT("--PluginsList");
-    TEXTOUT("                    Output the plugins information ID");
-    TEXTOUT("--UsePlugin=PluginId, -up PluginId");
-    TEXTOUT("                    By default, only format plugin are used.");
-    TEXTOUT("                    With this command, you can give the plugin ID you want to use.");
-    TEXTOUT("                    Plugin ID can be get using the --pluginslist.");
+    TEXTOUT("  --PluginsList");
+    TEXTOUT("      Output the plugins information ID");
+    TEXTOUT("  --UsePlugin=PluginId, -up PluginId");
+    TEXTOUT("      By default, only format plugin are used.");
+    TEXTOUT("      With this command, you can give the plugin ID you want to use.");
+    TEXTOUT("      Plugin ID can be get using the --pluginslist.");
     TEXTOUT("");
 
     TEXTOUT("File:");
-    TEXTOUT("--FileInformation, -fi");
-    TEXTOUT("                 Print files information and quit");
+    TEXTOUT("  --FileInformation, -fi");
+    TEXTOUT("       Print files information and quit");
 
     return CLI_RETURN_FINISH;
 }
@@ -102,26 +102,27 @@ int Help_Nothing()
 int Help_Advanced()
 {
     TEXTOUT("--LogFile=...");
-    TEXTOUT("                    Save the output in the specified file");
+    TEXTOUT("    Save the output in the specified file");
     TEXTOUT("--Compression=Mode");
-    TEXTOUT("                    Compress report in database using [Mode]");
-    TEXTOUT("                    [Mode] can be None for no compression");
-    TEXTOUT("                    [Mode] can be ZLib to use zlib");
+    TEXTOUT("    Compress report in database using [Mode]");
+    TEXTOUT("    [Mode] can be None for no compression");
+    TEXTOUT("    [Mode] can be ZLib to use zlib");
     TEXTOUT("-cz");
-    TEXTOUT("                    Same as --Compression=ZLib");
+    TEXTOUT("    Same as --Compression=ZLib");
     TEXTOUT("");
     TEXTOUT("--Force");
-    TEXTOUT("                    Force to parse the file if registered in database");
+    TEXTOUT("    Force to parse the file if registered in database");
     TEXTOUT("--NoMilAnalyze, -nmil");
-    TEXTOUT("                    Do not analyze with MediaInfoLib");
+    TEXTOUT("    Do not analyze with MediaInfoLib");
     TEXTOUT("--Async=yes, -as");
-    TEXTOUT("                    Analyze asynchronously the files, need to launch again the command to have the result");
+    TEXTOUT("    Analyze asynchronously the files,");
+    TEXTOUT("    need to launch again the command to have the result");
     TEXTOUT("--Https=0, --no-https");
-    TEXTOUT("                    XML output contains links in HTTP instead of HTTPS");
+    TEXTOUT("    XML output contains links in HTTP instead of HTTPS");
     TEXTOUT("--Help=Ssl");
-    TEXTOUT("                    More details about SSL specific options (e.g. for HTTPS or FTPS)");
+    TEXTOUT("    More details about SSL specific options (e.g. for HTTPS or FTPS)");
     TEXTOUT("--Help=Ssh");
-    TEXTOUT("                    More details about SSH specific options (e.g. for SFTP)");
+    TEXTOUT("    More details about SSH specific options (e.g. for SFTP)");
     TEXTOUT("");
 
     return CLI_RETURN_FINISH;
@@ -131,32 +132,32 @@ int Help_Advanced()
 int Help_Ssl()
 {
     TEXTOUT("--Ssl_CertificateFileName=...");
-    TEXTOUT("                    File name of the SSL certificate.");
-    TEXTOUT("                    The default format is \"PEM\" and can be changed");
-    TEXTOUT("                    with --Ssl_CertificateFormat.");
+    TEXTOUT("      File name of the SSL certificate.");
+    TEXTOUT("      The default format is \"PEM\" and can be changed");
+    TEXTOUT("      with --Ssl_CertificateFormat.");
     TEXTOUT("--Ssl_CertificateFormat=...");
-    TEXTOUT("                    File format of the SSL certificate.");
-    TEXTOUT("                    Supported formats are \"PEM\" and \"DER\"");
+    TEXTOUT("      File format of the SSL certificate.");
+    TEXTOUT("      Supported formats are \"PEM\" and \"DER\"");
     TEXTOUT("--Ssl_PrivateKeyFileName=...");
-    TEXTOUT("                    File name of the SSL private key.");
-    TEXTOUT("                    The default format is \"PEM\" and can be changed");
-    TEXTOUT("                    with --Ssl_PrivateKeyFormat.");
-    TEXTOUT("                    Note: private key with a password is not supported.");
+    TEXTOUT("      File name of the SSL private key.");
+    TEXTOUT("      The default format is \"PEM\" and can be changed");
+    TEXTOUT("      with --Ssl_PrivateKeyFormat.");
+    TEXTOUT("      Note: private key with a password is not supported.");
     TEXTOUT("--Ssl_PrivateKeyFormat=...");
-    TEXTOUT("                    File format of the SSL private key.");
-    TEXTOUT("                    Supported formats are \"PEM\" and \"DER\"");
+    TEXTOUT("      File format of the SSL private key.");
+    TEXTOUT("      Supported formats are \"PEM\" and \"DER\"");
     TEXTOUT("--Ssl_CertificateAuthorityFileName=...");
-    TEXTOUT("                    File name of the SSL certificate authorities");
-    TEXTOUT("                    to verify the peer with.");
+    TEXTOUT("      File name of the SSL certificate authorities");
+    TEXTOUT("      to verify the peer with.");
     TEXTOUT("--Ssl_CertificateAuthorityPath=...");
-    TEXTOUT("                    Path of the SSL certificate authorities");
-    TEXTOUT("                    to verify the peer with.");
+    TEXTOUT("      Path of the SSL certificate authorities");
+    TEXTOUT("      to verify the peer with.");
     TEXTOUT("--Ssl_CertificateRevocationListFileName=...");
-    TEXTOUT("                    File name of the SSL certificate revocation list.");
-    TEXTOUT("                    The format is \"PEM\"");
+    TEXTOUT("      File name of the SSL certificate revocation list.");
+    TEXTOUT("      The format is \"PEM\"");
     TEXTOUT("--Ssl_IgnoreSecurity=...");
-    TEXTOUT("                    Does not verify the authenticity of the peer's certificate");
-    TEXTOUT("                    Use it at your own risks");
+    TEXTOUT("      Does not verify the authenticity of the peer's certificate");
+    TEXTOUT("      Use it at your own risks");
 
     return CLI_RETURN_FINISH;
 }
@@ -165,31 +166,31 @@ int Help_Ssl()
 int Help_Ssh()
 {
     TEXTOUT("--Ssh_PublicKeyFileName=...");
-    TEXTOUT("                    File name of the SSH private key.");
-    TEXTOUT("                    Default is $HOME/.ssh/id_rsa.pub or $HOME/.ssh/id_dsa.pub");
-    TEXTOUT("                    if the HOME environment variable is set, and just");
-    TEXTOUT("                    \"id_rsa.pub\" or \"id_dsa.pub\" in the current directory");
-    TEXTOUT("                    if HOME is not set.");
-    TEXTOUT("                    Note: you need to set both public and private key.");
+    TEXTOUT("      File name of the SSH private key.");
+    TEXTOUT("      Default is $HOME/.ssh/id_rsa.pub or $HOME/.ssh/id_dsa.pub");
+    TEXTOUT("      if the HOME environment variable is set, and just");
+    TEXTOUT("      \"id_rsa.pub\" or \"id_dsa.pub\" in the current directory");
+    TEXTOUT("      if HOME is not set.");
+    TEXTOUT("      Note: you need to set both public and private key.");
     TEXTOUT("--Ssh_PrivateKeyFileName=...");
-    TEXTOUT("                    File name of the SSH private key.");
-    TEXTOUT("                    Default is $HOME/.ssh/id_rsa or $HOME/.ssh/id_dsa");
-    TEXTOUT("                    if the HOME environment variable is set, and just");
-    TEXTOUT("                    \"id_rsa\" or \"id_dsa\" in the current directory");
-    TEXTOUT("                    if HOME is not set.");
-    TEXTOUT("                    Note: you need to set both public and private key.");
-    TEXTOUT("                    Note: private key with a password is not supported.");
+    TEXTOUT("      File name of the SSH private key.");
+    TEXTOUT("      Default is $HOME/.ssh/id_rsa or $HOME/.ssh/id_dsa");
+    TEXTOUT("      if the HOME environment variable is set, and just");
+    TEXTOUT("      \"id_rsa\" or \"id_dsa\" in the current directory");
+    TEXTOUT("      if HOME is not set.");
+    TEXTOUT("      Note: you need to set both public and private key.");
+    TEXTOUT("      Note: private key with a password is not supported.");
     TEXTOUT("--Ssh_KnownHostsFileName=...");
-    TEXTOUT("                    File name of the known hosts");
-    TEXTOUT("                    The format is the OpenSSH file format (libssh2)");
-    TEXTOUT("                    Default is $HOME/.ssh/known_hosts");
-    TEXTOUT("                    if the HOME environment variable is set, and just");
-    TEXTOUT("                    \"known_hosts\" in the current directory");
-    TEXTOUT("                    if HOME is not set.");
+    TEXTOUT("      File name of the known hosts");
+    TEXTOUT("      The format is the OpenSSH file format (libssh2)");
+    TEXTOUT("      Default is $HOME/.ssh/known_hosts");
+    TEXTOUT("      if the HOME environment variable is set, and just");
+    TEXTOUT("      \"known_hosts\" in the current directory");
+    TEXTOUT("      if HOME is not set.");
     TEXTOUT("--Ssh_IgnoreSecurity");
-    TEXTOUT("                    Does not verify the authenticity of the peer");
-    TEXTOUT("                    (you don't need to accept the key with ssh first)");
-    TEXTOUT("                    Use it at your own risks");
+    TEXTOUT("      Does not verify the authenticity of the peer");
+    TEXTOUT("      (you don't need to accept the key with ssh first)");
+    TEXTOUT("      Use it at your own risks");
 
     return CLI_RETURN_FINISH;
 }
@@ -221,7 +222,7 @@ int Help_Xslt()
 //---------------------------------------------------------------------------
 int Version()
 {
-    TEXTOUT("MediaConch Command Line Interface 16.11");
+    TEXTOUT("MediaConch Command Line Interface 17.07");
 
     return CLI_RETURN_FINISH;
 }
